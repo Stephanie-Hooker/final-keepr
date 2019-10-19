@@ -55,7 +55,7 @@ namespace final_keepr.Services
       Keep keep = _repo.GetById(id);
       if (keep == null) { throw new Exception("invalid id"); }
       _repo.Delete(id);
-      return "deleted";
+      return "Keep deleted";
 
     }
   }
