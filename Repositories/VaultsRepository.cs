@@ -19,6 +19,11 @@ namespace final_keepr.Repositories
       return _db.Query<Vault>(sql, new { userId });
     }
 
+    public Vault GetById(int id)
+    {
+      string sql = "SELECT * FROM vaults WHERE id = @id";
+      return _db.QueryFirstOrDefault<Vault>(sql, new { id });
+    }
     public int Create(Vault newVault)
     {
       string sql = @"
@@ -30,11 +35,6 @@ namespace final_keepr.Repositories
       return _db.ExecuteScalar<int>(sql, newVault);
     }
 
-    public Vault GetById(int id)
-    {
-      string sql = "SELECT * FROM keeps WHERE id = @id";
-      return _db.QueryFirstOrDefault<Vault>(sql, new { id });
-    }
 
     public void Delete(int id)
     {

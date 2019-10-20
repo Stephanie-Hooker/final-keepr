@@ -14,7 +14,7 @@ namespace final_keepr.Repositories
       _db = db;
     }
     // return all keeps
-    internal IEnumerable<Keep> Get()
+    public IEnumerable<Keep> Get()
     {
       string sql = "SELECT * FROM keeps";
       return _db.Query<Keep>(sql);
