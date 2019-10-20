@@ -47,7 +47,7 @@ namespace final_keepr.Controllers
       }
     }
     [HttpGet("user")]
-    public ActionResult<Keep> GetByUser()
+    public ActionResult<IEnumerable<Keep>> GetByUser()
     {
       try
       {

@@ -56,5 +56,6 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     }
+
   }
 })
