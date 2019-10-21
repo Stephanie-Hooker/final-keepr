@@ -87,9 +87,8 @@ export default new Vuex.Store({
     backButton() {
       router.push({ name: "home" })
     },
-    dashboardButton() {
-      console.log("in the dashboard button")
-      router.push({ name: "dashboard" })
+    vaultButton() {
+      router.push({ name: "vaults" })
     }
 
   }

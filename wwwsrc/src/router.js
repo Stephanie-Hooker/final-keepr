@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 // @ts-ignore
 import Login from './views/Login.vue'
-import Dashboard from './views/Dashboard.vue'
+import Vaults from './views/Vaults.vue'
 
 Vue.use(Router)
 
@@ -21,9 +21,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: Dashboard
+      path: '/vaults',
+      name: 'vaults',
+      component: Vaults
     },
   ]
 })
