@@ -16,11 +16,15 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    vaults: [],
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    setVaults(state, vaults) {
+      state.vaults = vaults
     },
     resetState(state) {
       //clear the entire state object of user data
@@ -55,6 +59,37 @@ export default new Vuex.Store({
       } catch (e) {
         console.warn(e.message)
       }
+    },
+    getVaults({ commit, dispatch }) {
+      api.get('vaults')
+        .then(res => {
+          commit('setVaults', res.data)
+        })
+    },
+    addVault({ commit, dispatch }, vaultData) {
+      api.post('vaults', vaultData)
+        .then(serverVault => {
+          dispatch('getVaults')
+        })
+    },
+
+
+    async removeVault({ dispatch }, payload) {
+      try {
+
+        let res = await api.delete('/vaults/' + payload)
+        dispatch('getVaults')
+        router.push({ name: "vaults" })
+      } catch (error) {
+        console.error("store.js: removeVault")
+      }
+    },
+    backButton() {
+      router.push({ name: "home" })
+    },
+    dashboardButton() {
+      console.log("in the dashboard button")
+      router.push({ name: "dashboard" })
     }
 
   }

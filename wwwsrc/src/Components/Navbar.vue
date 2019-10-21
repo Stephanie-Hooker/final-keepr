@@ -1,12 +1,16 @@
 <template>
-  <div class="sticky-top row justify-content-center">
+  <div class="sticky-top row">
     <div class="col-12">
-      <nav class="Navbar">
+      <nav class="navbar">
         <form class="form-inline">
-          <button class="btn logout" type="button" v-if="user.id" @click="logout">logout</button>
-          <router-link v-else :to="{name: 'login'}">Login</router-link>
-          <h3 class="welcome">Welcome, {{user.username}}</h3>
-          <button class="btn dashboard" type="button" @click="dashboard">View Dashboard</button>
+          <button class="btn" type="button" @click="logout" v-if="user.email">Logout</button>
+          <button class="btn" type="button" @click="login" v-else>Login</button>
+          <button
+            class="btn"
+            type="button"
+            @click="dashboardButton"
+            v-if="user.email"
+          >View Dashboard</button>
         </form>
       </nav>
     </div>
@@ -29,6 +33,12 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("logout");
+    },
+    login() {
+      this.$store.dispatch("login");
+    },
+    dashboardButton() {
+      this.$store.dispatch("dashboardButton");
     }
   },
   components: {}
@@ -37,6 +47,17 @@ export default {
 
 
 <style scoped>
+/* .form-inline {
+  display: contents;
+} */
+/* .sticky-top {
+  position: sticky;
+  background-color: #dad6d2;
+} */
+.btn {
+  background-color: #4bbcbc;
+  color: black;
+}
 .form-inline {
   display: flex;
   flex-direction: row;
