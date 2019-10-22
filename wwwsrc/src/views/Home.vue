@@ -5,6 +5,7 @@
     <button v-if="user.id" @click="logout">logout</button>
     <router-link v-else :to="{name: 'login'}">Login</router-link>-->
     <h3>View your public keeps</h3>
+    <Keeps />
     <!-- <form>
       <div class="form-group row">
         <label for="Title" class="col-sm-2 col-form-label">Title</label>
@@ -74,9 +75,10 @@
 
 <script>
 import Navbar from "../Components/Navbar";
+import Keeps from "../Components/Keeps";
 export default {
   name: "home",
-  components: { Navbar },
+  components: { Navbar, Keeps },
   computed: {
     // user() {
     //   return this.$store.state.user;

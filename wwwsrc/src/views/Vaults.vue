@@ -1,5 +1,5 @@
 <template>
-  <div class="Vaults">
+  <div class="Vault">
     <button class="btn-outline backButton" @click="backButton">Back</button>
     <h1 class="title pt-4">Your Vaults!</h1>
     <h3>Add a Vault</h3>
@@ -12,13 +12,16 @@
       <router-link class="link" :to="{name: 'vault', params: {vaultId: vault._id}}">{{vault.name}}</router-link>
       <span class="delete-vaults delete m-2" @click="removeVaults(vault._id)">x</span>
     </div>
+    <!-- <AddKeepsModal />
+    <button class="btn-outline" data-toggle="modal" data-target="#add-keeps-modal">Add Keep</button>-->
   </div>
 </template>
 
 <script>
 import router from "@/router.js";
+// import AddKeepsModal from "../Components/AddKeepsModal";
 export default {
-  name: "Vaults",
+  name: "Vault",
   props: ["vaultId"],
   mounted() {
     this.$store.dispatch("getVaults");
@@ -37,8 +40,8 @@ export default {
     }
   },
   methods: {
-    addVault() {
-      this.$store.dispatch("addVault", this.newVault);
+    addVaults() {
+      this.$store.dispatch("addVaults", this.newVault);
       this.newVault = { name: "", description: "" };
     },
     removeVault(id) {
@@ -47,7 +50,8 @@ export default {
     backButton() {
       this.$store.dispatch("backButton");
     }
-  }
+  },
+  components: {}
 };
 </script>
 

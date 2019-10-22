@@ -18,10 +18,15 @@ export default new Vuex.Store({
   state: {
     user: {},
     vaults: [],
+    keeps: []
+
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    setKeeps(state, keeps) {
+      state.keeps = keeps
     },
     setVaults(state, vaults) {
       state.vaults = vaults
@@ -60,17 +65,23 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
-    getVaults({ commit, dispatch }) {
-      api.get('vaults')
-        .then(res => {
-          commit('setVaults', res.data)
-        })
+    async addVaults({ commit, dispatch }, vaultData) {
+      try {
+        let res = await api.post('/vaults', vaultData)
+        dispatch("getVaults")
+      } catch (error) {
+        console.error(error)
+      }
     },
-    addVault({ commit, dispatch }, vaultData) {
-      api.post('vaults', vaultData)
-        .then(serverVault => {
-          dispatch('getVaults')
-        })
+
+    async getVaults({ commit, dispatch }) {
+      try {
+        let res = await api.get('/vaults')
+        commit('setVaults', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+
     },
 
 
@@ -87,9 +98,38 @@ export default new Vuex.Store({
     backButton() {
       router.push({ name: "home" })
     },
-    vaultButton() {
-      router.push({ name: "vaults" })
+    vaultsButton() {
+      router.push({ name: "vault" })
+    },
+    addKeep({ commit, dispatch }, keepData) {
+      api.post('keeps', keepData)
+        .then(serverKeep => {
+          dispatch('getKeeps')
+        })
+    },
+    getKeeps({ commit, dispatch }) {
+      api.get('keeps')
+        .then(res => {
+          commit('setKeeps', res.data)
+        })
+    },
+    async removeKeep({ dispatch }, data) {
+      try {
+        let res = await api.delete('/keeps/' + data.id)
+        dispatch("getKeeps")
+      } catch (error) {
+        console.error(error)
+      }
     }
+
+    //   async addToPublicKeeps({ commit }, data) {
+    //     try {
+    //       let res = await api.get("/keeps")
+    //       commit("setPublicKeeps", res.data)
+    //     } catch (error) {
+    //       console.error(error)
+    //     }
+    // }
 
   }
 })

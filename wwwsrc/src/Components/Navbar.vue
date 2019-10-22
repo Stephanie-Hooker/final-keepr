@@ -5,7 +5,10 @@
         <form class="form-inline">
           <button class="btn" type="button" @click="logout" v-if="user.email">Logout</button>
           <button class="btn" type="button" @click="login" v-else>Login</button>
-          <button class="btn" type="button" @click="vaultButton" v-if="user.email">Vaults</button>
+          <div>
+            <button class="btn" type="button" @click="vaultsButton" v-if="user.email">Vaults</button>
+            <button class="btn" type="button" @click="keepsButton" v-if="user.email">Keeps</button>
+          </div>
         </form>
       </nav>
     </div>
@@ -32,8 +35,11 @@ export default {
     login() {
       this.$store.dispatch("login");
     },
-    vaultButton() {
-      this.$store.dispatch("vaultButton");
+    vaultsButton() {
+      this.$store.dispatch("vaultsButton");
+    },
+    keepsButton() {
+      this.$store.dispatch("keepsButton");
     }
   },
   components: {}
@@ -54,10 +60,10 @@ export default {
   color: black;
 }
 .form-inline {
-  /* display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: nowrap; */
+  flex-wrap: nowrap;
   display: contents;
 }
 
