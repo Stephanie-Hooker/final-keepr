@@ -5,6 +5,8 @@
     <button v-if="user.id" @click="logout">logout</button>
     <router-link v-else :to="{name: 'login'}">Login</router-link>-->
     <h3>View your public keeps</h3>
+    <AddKeepsModal />
+    <button btn-outline data-toggle="modal" data-target="#add-keeps-modal">Add Keep</button>
     <Keeps />
     <!-- <form>
       <div class="form-group row">
@@ -76,9 +78,10 @@
 <script>
 import Navbar from "../Components/Navbar";
 import Keeps from "../Components/Keeps";
+import AddKeepsModal from "../Components/AddKeepsModal";
 export default {
   name: "home",
-  components: { Navbar, Keeps },
+  components: { Navbar, Keeps, AddKeepsModal },
   computed: {
     // user() {
     //   return this.$store.state.user;

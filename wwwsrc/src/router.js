@@ -25,5 +25,6 @@ export default new Router({
       name: 'vaults',
       component: Vaults
     },
+
   ]
 })

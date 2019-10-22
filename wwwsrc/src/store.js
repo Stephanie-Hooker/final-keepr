@@ -6,7 +6,8 @@ import AuthService from './AuthService'
 
 Vue.use(Vuex)
 
-let baseUrl = location.host.includes('localhost') ? '//localhost:5000/' : '/'
+let baseUrl = location.host.includes('localhost') ? 'https://localhost:5001/' : '/'
+// let baseUrl = location.host.includes('localhost') ? '//localhost:5000/' : '/'
 
 let api = Axios.create({
   baseURL: baseUrl + "api/",
@@ -99,19 +100,27 @@ export default new Vuex.Store({
       router.push({ name: "home" })
     },
     vaultsButton() {
-      router.push({ name: "vault" })
+      router.push({ name: "vaults" })
     },
-    addKeep({ commit, dispatch }, keepData) {
-      api.post('keeps', keepData)
-        .then(serverKeep => {
-          dispatch('getKeeps')
-        })
+
+    async  addKeep({ commit, dispatch }, keepData) {
+      try {
+        debugger;
+        let res = await api.post('/keeps', keepData)
+        dispatch("getKeeps")
+      } catch (error) {
+        console.error(error)
+      }
+
+
     },
-    getKeeps({ commit, dispatch }) {
-      api.get('keeps')
-        .then(res => {
-          commit('setKeeps', res.data)
-        })
+    async getKeeps({ commit, dispatch }) {
+      try {
+        let res = await api.get('/keeps')
+        commit('setKeeps', res.data)
+      } catch (error) {
+        console.error(error)
+      }
     },
     async removeKeep({ dispatch }, data) {
       try {

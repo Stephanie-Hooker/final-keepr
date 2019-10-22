@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="KeepsModal"> -->
   <div id="add-keeps-modal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -15,9 +14,9 @@
               <input
                 type="text"
                 class="form-control"
-                id="Name"
+                id="name"
                 placeholder="Enter Keep Name"
-                v-model="newKeep.Name"
+                v-model="newKeep.name"
                 required
               />
             </div>
@@ -25,28 +24,26 @@
               <input
                 type="text"
                 class="form-control"
-                id="Img"
+                id="img"
                 placeholder="Img url"
-                v-model="newKeep.Img"
+                v-model="newKeep.img"
               />
             </div>
             <div class="form-group">
               <input
                 type="text"
                 class="form-control"
-                id="Description"
+                id="description"
                 placeholder="Enter a Description"
-                v-model="newKeep.Description"
+                v-model="newKeep.description"
               />
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-          <div v-for="keep in Keeps" :key="keep._id"></div>
         </div>
       </div>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 
@@ -64,7 +61,8 @@ export default {
     }
   },
   methods: {
-    AddKeep() {
+    addKeep() {
+      debugger;
       this.$store.dispatch("addKeep", this.newKeep);
       $(".close").click();
     }
