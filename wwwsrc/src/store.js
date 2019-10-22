@@ -19,7 +19,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     vaults: [],
-    keeps: []
+    keeps: [],
+    activeKeep: {}
 
   },
   mutations: {
@@ -102,10 +103,19 @@ export default new Vuex.Store({
     vaultsButton() {
       router.push({ name: "vaults" })
     },
+    viewKeep() {
+      router.push({ name: "activeKeep" })
+    },
+    saveKeep() {
+      router.push({ name: "vaults" })
+    },
+    backToHome() {
+      router.push({ name: "home" })
+    },
 
     async  addKeep({ commit, dispatch }, keepData) {
       try {
-        debugger;
+
         let res = await api.post('/keeps', keepData)
         dispatch("getKeeps")
       } catch (error) {
@@ -124,6 +134,7 @@ export default new Vuex.Store({
     },
     async removeKeep({ dispatch }, data) {
       try {
+
         let res = await api.delete('/keeps/' + data.id)
         dispatch("getKeeps")
       } catch (error) {

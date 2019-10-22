@@ -3,13 +3,13 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add A Vault</h5>
+          <h5 class="modal-title">Add Vault</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form @submit.prevent="addVaults()">
+          <form @submit.prevent="addVault()">
             <div class="form-group">
               <input
                 type="text"
@@ -46,8 +46,17 @@ export default {
       newVault: {}
     };
   },
-  computed: {},
-  methods: {},
+  computed: {
+    vaults() {
+      return this.$store.state.vaults;
+    }
+  },
+  methods: {
+    addVault() {
+      this.$store.dispatch("addVaults", this.newVault);
+      $(".close").click();
+    }
+  },
   components: {}
 };
 </script>

@@ -3,11 +3,21 @@
     <div class="col-12">
       <nav class="navbar">
         <form class="form-inline">
-          <button class="btn" type="button" @click="logout" v-if="user.email">Logout</button>
-          <button class="btn" type="button" @click="login" v-else>Login</button>
+          <button class="btn-outline" type="button" @click="logout" v-if="user.email">Logout</button>
+          <button class="btn-outline" type="button" @click="login" v-else>Login</button>
           <div>
-            <button class="btn" type="button" @click="vaultsButton" v-if="user.email">Vaults</button>
-            <button class="btn" type="button" @click="keepsButton" v-if="user.email">Keeps</button>
+            <button
+              class="btn-outline mr-1"
+              type="button"
+              @click="vaultsButton"
+              v-if="user.email"
+            >Vaults</button>
+            <button
+              class="btn-outline ml-1"
+              type="button"
+              @click="keepsButton"
+              v-if="user.email"
+            >Keeps</button>
           </div>
         </form>
       </nav>
