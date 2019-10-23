@@ -12,12 +12,6 @@
               @click="vaultsButton"
               v-if="user.email"
             >Vaults</button>
-            <button
-              class="btn-outline ml-1"
-              type="button"
-              @click="keepsButton"
-              v-if="user.email"
-            >Keeps</button>
           </div>
         </form>
       </nav>
@@ -47,9 +41,6 @@ export default {
     },
     vaultsButton() {
       this.$store.dispatch("vaultsButton");
-    },
-    keepsButton() {
-      this.$store.dispatch("keepsButton");
     }
   },
   components: {}
