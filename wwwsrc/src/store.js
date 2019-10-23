@@ -39,6 +39,25 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    backButton() {
+      router.push({ name: "home" })
+    },
+    vaultsButton() {
+      router.push({ name: "vaults" })
+    },
+    viewKeep() {
+      router.push({ name: "activeKeep" })
+    },
+    saveKeep() {
+      router.push({ name: "vaults" })
+    },
+    backToHome() {
+      router.push({ name: "home" })
+    },
+    returnHome() {
+      router.push({ name: "home" })
+    },
+
     async register({ commit, dispatch }, creds) {
       try {
         let user = await AuthService.Register(creds)
@@ -48,6 +67,7 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
+
     async login({ commit, dispatch }, creds) {
       try {
         let user = await AuthService.Login(creds)
@@ -57,6 +77,7 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
+
     async logout({ commit, dispatch }) {
       try {
         let success = await AuthService.Logout()
@@ -67,6 +88,7 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
+
     async addVaults({ commit, dispatch }, vaultData) {
       try {
         let res = await api.post('/vaults', vaultData)
@@ -83,34 +105,15 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
-
     },
 
-
-    async removeVault({ dispatch }, payload) {
+    async removeVault({ dispatch }, data) {
       try {
-
-        let res = await api.delete('/vaults/' + payload)
+        let res = await api.delete('/vaults/' + data.id)
         dispatch('getVaults')
-        router.push({ name: "vaults" })
       } catch (error) {
         console.error("store.js: removeVault")
       }
-    },
-    backButton() {
-      router.push({ name: "home" })
-    },
-    vaultsButton() {
-      router.push({ name: "vaults" })
-    },
-    viewKeep() {
-      router.push({ name: "activeKeep" })
-    },
-    saveKeep() {
-      router.push({ name: "vaults" })
-    },
-    backToHome() {
-      router.push({ name: "home" })
     },
 
     async  addKeep({ commit, dispatch }, keepData) {
@@ -122,7 +125,6 @@ export default new Vuex.Store({
         console.error(error)
       }
 
-
     },
     async getKeeps({ commit, dispatch }) {
       try {
@@ -132,6 +134,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
     async removeKeep({ dispatch }, data) {
       try {
 
@@ -141,15 +144,5 @@ export default new Vuex.Store({
         console.error(error)
       }
     }
-
-    //   async addToPublicKeeps({ commit }, data) {
-    //     try {
-    //       let res = await api.get("/keeps")
-    //       commit("setPublicKeeps", res.data)
-    //     } catch (error) {
-    //       console.error(error)
-    //     }
-    // }
-
   }
 })

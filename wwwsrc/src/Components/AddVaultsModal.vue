@@ -25,7 +25,7 @@
                 type="text"
                 class="form-control"
                 id="description"
-                placeholder="Vault description"
+                placeholder="Enter a Description"
                 v-model="newVault.description"
               />
             </div>
