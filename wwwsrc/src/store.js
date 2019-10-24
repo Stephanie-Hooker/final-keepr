@@ -33,6 +33,9 @@ export default new Vuex.Store({
     setVaults(state, vaults) {
       state.vaults = vaults
     },
+    setActiveKeep(state, activeKeep) {
+      state.activeKeep = activeKeep;
+    },
     resetState(state) {
       //clear the entire state object of user data
       state.user = {}
@@ -132,6 +135,24 @@ export default new Vuex.Store({
         commit('setKeeps', res.data)
       } catch (error) {
         console.error(error)
+      }
+    },
+
+    async getKeepById({ commit, dispatch }, keepId) {
+      try {
+        let res = await api.get(`/keeps/${keepId}`);
+        commit('setActiveKeep', res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async editKeep({ commit, dispatch }, keep) {
+      try {
+        let res = await api.put(`/keeps/${keep.id}`, keep);
+        dispatch("getKeeps");
+      } catch (error) {
+        console.error(error);
       }
     },
 

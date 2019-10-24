@@ -24,7 +24,16 @@ export default {
   computed: {},
   methods: {
     view() {
-      this.$store.dispatch("viewKeep");
+      // increment keep.views by one
+      this.keep.views++;
+      console.log(`count ${this.keep.views}`);
+      this.$store.dispatch("editKeep", this.keep);
+
+      // now send us to the new page.
+      this.$router.push({
+        name: "activeKeep",
+        params: { keepId: this.keep.id }
+      });
     },
     save() {
       this.$store.dispatch("saveKeep");

@@ -27,8 +27,8 @@ export default new Router({
       component: Vaults
     },
     {
-      path: '/activeKeep',
-      name: '/activeKeep',
+      path: '/activeKeep/:keepId',
+      name: 'activeKeep',
       component: ActiveKeep
     }
 

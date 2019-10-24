@@ -46,6 +46,8 @@ namespace final_keepr.Services
       keep.Description = newKeep.Description;
       keep.Img = newKeep.Img;
       keep.IsPrivate = newKeep.IsPrivate;
+      keep.Views = newKeep.Views;
+      keep.Keeps = newKeep.Keeps;
       _repo.Edit(keep);
       return keep;
     }
