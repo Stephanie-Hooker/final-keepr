@@ -18,11 +18,12 @@ namespace final_keepr.Controllers
     }
 
     [HttpGet("{VaultId}")]
-    public ActionResult<VaultKeep> Get(int vaultId, string userId)
+    public ActionResult<VaultKeep> Get(int vaultId)
     {
       try
       {
-        return Ok(_vks.Get(vaultId, userId));
+        var id = HttpContext.User.FindFirstValue("Id");
+        return Ok(_vks.Get(vaultId, id));
       }
       catch (Exception e)
       {

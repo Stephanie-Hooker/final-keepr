@@ -8,10 +8,10 @@
         <div class="card-body">
           <h5 class="card-title">{{keep.name}}</h5>
           <p class="card-text">{{keep.description}}</p>
-          <span>views: {{keep.views}} saves: {{keep.save}}</span>
+          <span>views: {{keep.views + 1}} saves: {{keep.save}}</span>
           <!-- <button class="btn-outline mr-1" type="button" @click="view">View</button> -->
 
-          <button class="btn-outline ml-1" type="button" @click="save">Save</button>
+          <button class="btn-outline ml-1" type="button" @click="keep">Save</button>
           <span class="bg-light text-danger rounded px-1 ml-3 pb-1" @click="removeKeep()">x</span>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     let keepId = this.$route.params.keepId;
-    console.log(`KeepID: ${keepId}`);
+    console.log(`KeepId: ${keepId}`);
     this.$store.dispatch("getKeepById", keepId);
   },
   computed: {
@@ -44,7 +44,7 @@ export default {
     view() {
       this.$store.dispatch("viewKeep");
     },
-    save() {
+    keep() {
       this.$store.dispatch("saveKeep");
     },
     removeKeep() {
