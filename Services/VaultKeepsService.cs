@@ -12,11 +12,8 @@ namespace final_keepr.Services
     {
       _repo = repo;
     }
-    public IEnumerable<VaultKeep> Get(int vaultId, string userId)
+    public IEnumerable<Keep> Get(int vaultId, string userId)
     {
-      // VaultKeep exists = _repo.GetById(id);
-      // if (exists == null) { throw new Exception("Invalid id"); }
-      // return exists;
       return _repo.Get(vaultId, userId);
     }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using final_keepr.Models;
 using final_keepr.Services;
@@ -18,7 +19,7 @@ namespace final_keepr.Controllers
     }
 
     [HttpGet("{VaultId}")]
-    public ActionResult<VaultKeep> Get(int vaultId)
+    public ActionResult<IEnumerable<Keep>> Get(int vaultId)
     {
       try
       {
@@ -34,7 +35,7 @@ namespace final_keepr.Controllers
 
     [Authorize]
     [HttpPost]
-    public ActionResult<VaultKeep> Create([FromBody] VaultKeep newVaultKeep)
+    public ActionResult<Keep> Create([FromBody] VaultKeep newVaultKeep)
     {
       try
       {
@@ -50,7 +51,7 @@ namespace final_keepr.Controllers
     }
     [Authorize]
     [HttpPut]
-    public ActionResult<VaultKeep> Edit([FromBody] VaultKeep vaultKeep)
+    public ActionResult<Keep> Edit([FromBody] VaultKeep vaultKeep)
     {
       try
       {

@@ -7,13 +7,6 @@
     <AddVaultsModal />
     <button btn-outline data-toggle="modal" data-target="#add-vaults-modal">Add a Vault</button>
     <Vaults />
-    <!-- <div class="card border-info mb-3 shadow" style="max-width: 18rem;">
-      <div class="card-header">{{vaultProp.name}}</div>
-      <div class="card-body text-info">
-        <p class="card-text">{{vaultProp.description}}</p>
-        <span class="bg-light text-danger rounded px-1 ml-3 pb-1" @click="removeVault()">x</span>
-      </div>
-    </div>-->
   </div>
 </template>
 
@@ -25,15 +18,9 @@ export default {
   data() {
     return {};
   },
-  // props: ["vault, vaults"],
-  computed: {
-    // Vault() {
-    //   return this.$store.state.vaults;
-    // }
-  },
-  // mounted() {
-  //   this.$store.dispatch("getVaults");
-  // },
+
+  computed: {},
+
   methods: {
     returnHome() {
       this.$store.dispatch("returnHome");

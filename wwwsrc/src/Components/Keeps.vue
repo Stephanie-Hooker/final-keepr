@@ -1,7 +1,11 @@
 <template>
-  <div class="Keeps">
-    <div v-for="keep in keeps" :key="keep._id">
-      <Keep :keep="keep" v-if="keep.isPrivate == false" />
+  <div class="Keeps container-fluid">
+    <div class="row">
+      <div class="col-3">
+        <div v-for="keep in keeps" :key="keep._id">
+          <Keep :keep="keep" v-if="keep.isPrivate == false" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +20,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getKeeps");
+    this.$store.dispatch("getVaults");
   },
   computed: {
     keeps() {

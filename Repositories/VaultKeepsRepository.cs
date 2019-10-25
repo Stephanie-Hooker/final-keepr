@@ -13,13 +13,13 @@ namespace final_keepr.Repositories
     {
       _db = db;
     }
-    public IEnumerable<VaultKeep> Get(int vaultId, string userId)
+    public IEnumerable<Keep> Get(int vaultId, string userId)
     {
       string sql = @"SELECT * FROM vaultkeeps vk 
       INNER JOIN keeps k ON k.id = vk.keepId 
       WHERE(vaultId = @vaultId AND vk.userId = @userId)";
-      var test = _db.Query<VaultKeep>(sql, new { vaultId, userId });
-      return test;
+      return _db.Query<Keep>(sql, new { vaultId, userId });
+
     }
 
     public int Create(VaultKeep newVaultKeep)

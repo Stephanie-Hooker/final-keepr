@@ -52,7 +52,7 @@ export default new Vuex.Store({
       router.push({ name: "activeKeep" })
     },
     saveKeep() {
-      router.push({ name: "vaults" })
+      router.push({ name: "activeKeep" })
     },
     backToHome() {
       router.push({ name: "home" })
@@ -60,6 +60,7 @@ export default new Vuex.Store({
     returnHome() {
       router.push({ name: "home" })
     },
+
 
     async register({ commit, dispatch }, creds) {
       try {
@@ -153,6 +154,15 @@ export default new Vuex.Store({
         dispatch("getKeeps");
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    async addVaultKeep({ dispatch, commit }, payload) {
+      try {
+        let res = await api.post('/vaultkeeps', payload)
+        dispatch("getKeeps")
+      } catch (error) {
+        console.error(error)
       }
     },
 
