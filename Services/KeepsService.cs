@@ -52,10 +52,10 @@ namespace final_keepr.Services
       return keep;
     }
 
-    public string Delete(int id)
+    public string Delete(int id, string userId)
     {
       Keep keep = _repo.GetById(id);
-      if (keep == null) { throw new Exception("invalid id"); }
+      if (keep == null || keep.UserId != userId) { throw new Exception("invalid id"); }
       _repo.Delete(id);
       return "Keep deleted";
 

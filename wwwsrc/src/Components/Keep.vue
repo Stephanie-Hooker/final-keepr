@@ -59,7 +59,6 @@ export default {
       });
     },
     addVaultKeep() {
-      debugger;
       let payload = {
         keepId: this.keep.id,
         vaultId: this.newVaultId

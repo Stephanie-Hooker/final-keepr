@@ -107,6 +107,24 @@ export default new Vuex.Store({
       }
     },
 
+    async loginNav() {
+      try {
+        router.push({ name: "login" })
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async logoutNav({ commit, dispatch }) {
+      try {
+        let success = await AuthService.Logout()
+        if (!success) { }
+        commit('resetState')
+        router.push({ name: "home" })
+      } catch (e) {
+        console.warn(e.message)
+      }
+    },
+
     async addVaults({ commit, dispatch }, vaultData) {
       try {
         let res = await api.post('/vaults', vaultData)
