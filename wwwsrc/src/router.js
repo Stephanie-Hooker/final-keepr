@@ -6,6 +6,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Vaults from './views/Vaults.vue'
 import ActiveKeep from "./views/ActiveKeep.vue"
+import ActiveVault from "./views/ActiveVault.vue"
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/activeKeep/:keepId',
       name: 'activeKeep',
       component: ActiveKeep
+    },
+    {
+      path: '/activeVault/:vaultId',
+      name: 'activeVault',
+      component: ActiveVault
     }
 
   ]

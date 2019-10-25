@@ -1,6 +1,6 @@
 <template>
   <div class="Vaults">
-    <div v-for="vault in vaults" :key="vault._id">
+    <div v-for="vault in vaults" :key="vault.id">
       <Vault :vault="vault" />
     </div>
   </div>
@@ -20,6 +20,9 @@ export default {
   computed: {
     vaults() {
       return this.$store.state.vaults;
+    },
+    keeps() {
+      return this.$store.state.keeps;
     }
   },
   methods: {},

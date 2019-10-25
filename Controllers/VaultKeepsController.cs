@@ -59,7 +59,6 @@ namespace final_keepr.Controllers
       }
       catch (Exception e)
       {
-
         return BadRequest(e.Message);
       }
     }
