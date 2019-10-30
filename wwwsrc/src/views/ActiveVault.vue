@@ -1,7 +1,11 @@
 <template>
-  <div class="ActiveVault container-fluid">
+  <div class="ActiveVault container-fluid bg">
     <div class="row">
-      <button class="btn-outline" type="button" @click="backToVault">Back to Vaults</button>
+      <button
+        class="btn btn-secondary btn-lg raised active"
+        type="button"
+        @click="backToVault"
+      >Back to Vaults</button>
     </div>
 
     <div class="row justify-content-center">
@@ -13,7 +17,10 @@
     <div class="row">
       <div v-for="keep in keeps" :key="keep._id">
         <Keep :keep="keep" />
-        <button class="btn-outline" @click="removeVaultKeep(keep.id)">Delete VaultKeep</button>
+        <button
+          class="btn btn-secondary btn-lg raised active"
+          @click="removeVaultKeep(keep.id)"
+        >Delete</button>
       </div>
     </div>
   </div>
@@ -58,4 +65,19 @@ export default {
 
 
 <style scoped>
+.bg {
+  background-color: #e2e1e0;
+  min-height: 100vh;
+}
+.btn-secondary.raised {
+  box-shadow: 0 3px 0 0 #626566;
+}
+
+.btn-secondary.raised:active,
+.btn-secondary.raised.active {
+  background: #ec9b9b;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
 </style>

@@ -1,11 +1,7 @@
 <template>
-  <div class="Keeps container-fluid">
-    <div class="row">
-      <div class="col-3">
-        <div v-for="keep in keeps" :key="keep._id">
-          <Keep :keep="keep" v-if="keep.isPrivate == false" />
-        </div>
-      </div>
+  <div class="Keeps row">
+    <div class="col-4" v-for="keep in keeps" :key="keep._id">
+      <Keep :keep="keep" v-if="keep.isPrivate == false" />
     </div>
   </div>
 </template>

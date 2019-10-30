@@ -1,13 +1,14 @@
 <template>
   <div class="Keeps container-fluid">
-    <Navbar />
+    <!-- <Navbar /> -->
     <div class="row">
-      <Keep v-for="keep in keeps" :keep="keep" :key="keep.id" />
-      <div class="col-12 pt-5">
-        <AddKeepsModal />
-        <button class="btn-outline" data-toggle="modal" data-target="#add-keeps-modal">Add Keep</button>
+      <div class="col-3">
+        <Keep v-for="keep in keeps" :keep="keep" :key="keep.id" />
       </div>
     </div>
+
+    <AddKeepsModal />
+    <button class="btn-outline" data-toggle="modal" data-target="#add-keeps-modal">Add Keep</button>
   </div>
 </template>
 

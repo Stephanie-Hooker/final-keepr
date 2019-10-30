@@ -5,7 +5,11 @@
       <div class="card-header">Name: {{vault.name}}</div>
       <div class="card-body text-info">
         <p class="card-text">Description: {{vault.description}}</p>
-        <button class="btn-outline mr-1" type="button" @click="viewVault">View Vault</button>
+        <button
+          class="btn btn-secondary btn-lg raised active mr-1"
+          type="button"
+          @click="viewVault"
+        >View Vault</button>
       </div>
     </div>
   </div>
@@ -39,4 +43,15 @@ export default {
 
 
 <style scoped>
+.btn-secondary.raised {
+  box-shadow: 0 3px 0 0 #626566;
+}
+
+.btn-secondary.raised:active,
+.btn-secondary.raised.active {
+  background: #ec9b9b;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
 </style>
