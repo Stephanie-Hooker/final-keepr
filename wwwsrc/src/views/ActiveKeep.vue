@@ -94,6 +94,7 @@ export default {
 <style scoped>
 .bg {
   background-color: #e2e1e0;
+  min-height: 100vh;
 }
 .img {
   min-width: 10vh;
