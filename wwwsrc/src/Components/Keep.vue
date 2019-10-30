@@ -1,6 +1,6 @@
 <template>
   <div class="Keep">
-    <div class="card border-info mb-3 shadow" style="max-width: 18rem;">
+    <div class="card border-dark mb-3 shadow" style="max-width: 18rem;">
       <img v-bind:src="`${keep.img}`" class="card-img-top img" alt />
       <div class="card-body">
         <h5 class="card-header">Name: {{keep.name}}</h5>

@@ -1,7 +1,7 @@
 <template>
   <div class="Keeps row">
-    <div class="col-4" v-for="keep in keeps" :key="keep._id">
-      <Keep :keep="keep" v-if="keep.isPrivate == false" />
+    <div class="col-3" v-for="keep in keeps" :key="keep._id">
+      <Keep :keep="keep" />
     </div>
   </div>
 </template>

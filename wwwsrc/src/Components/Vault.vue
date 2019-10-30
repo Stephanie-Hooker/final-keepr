@@ -1,9 +1,15 @@
 <template>
   <div class="Vault">
-    <div class="card border-info mb-3 shadow" style="max-width: 18rem;">
-      <span class="bg-light text-danger rounded px-1 ml-3 pb-1" @click="removeVault()">x</span>
+    <div class="card border-dark mb-3 shadow" style="max-width: 18rem;">
+      <button
+        class="btn btn-outline-light raised active ml-2 text-danger"
+        type="button"
+        @click="removeVault()"
+      >
+        <i class="fa fa-trash fa-2x"></i>
+      </button>
       <div class="card-header">Name: {{vault.name}}</div>
-      <div class="card-body text-info">
+      <div class="card-body text-dark">
         <p class="card-text">Description: {{vault.description}}</p>
         <button
           class="btn btn-secondary btn-lg raised active mr-1"

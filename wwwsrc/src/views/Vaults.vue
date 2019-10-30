@@ -2,8 +2,8 @@
   <div class="container-fluid bg Vault">
     <NavVault />
     <div class="row justify-content-center mb-4 mt-5">
-      <h1 class="fancy">
-        <span>Your Vaults</span>
+      <h1 class="fancy title">
+        <span>Vaults</span>
       </h1>
     </div>
     <div class="row justify-content-center mb-5">
@@ -44,6 +44,9 @@ export default {
 .bg {
   background-color: #e2e1e0;
   min-height: 100vh;
+}
+.title {
+  font-family: "Bad Script", cursive;
 }
 .btn-secondary.raised {
   box-shadow: 0 3px 0 0 #626566;

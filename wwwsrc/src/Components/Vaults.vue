@@ -1,6 +1,6 @@
 <template>
   <div class="Vaults row">
-    <div class="col-4" v-for="vault in vaults" :key="vault.id">
+    <div class="col-3" v-for="vault in vaults" :key="vault.id">
       <Vault :vault="vault" />
     </div>
   </div>

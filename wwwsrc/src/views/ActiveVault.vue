@@ -1,6 +1,6 @@
 <template>
   <div class="ActiveVault container-fluid bg">
-    <div class="row">
+    <div class="row ml-1">
       <button
         class="btn btn-secondary btn-lg raised active"
         type="button"
@@ -14,7 +14,8 @@
     <div class="row justify-content-center">
       <h4>Description: {{vault.description}}</h4>
     </div>
-    <div class="row">
+    <div class="row mx-2 mt-3">
+      <div class="col-3 mx-2"></div>
       <div v-for="keep in keeps" :key="keep._id">
         <Keep :keep="keep" />
         <button
