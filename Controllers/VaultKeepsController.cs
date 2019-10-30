@@ -55,6 +55,7 @@ namespace final_keepr.Controllers
     {
       try
       {
+        vaultKeep.UserId = HttpContext.User.FindFirstValue("Id");
         return Ok(_vks.Delete(vaultKeep));
       }
       catch (Exception e)

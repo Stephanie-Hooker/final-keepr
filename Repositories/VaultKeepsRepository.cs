@@ -33,11 +33,17 @@ namespace final_keepr.Repositories
       return _db.ExecuteScalar<int>(sql, newVaultKeep);
     }
 
-    public void Delete(VaultKeep vaultKeep)
+    public VaultKeep Get(VaultKeep vaultKeep)
+    {
+      string sql = @"SELECT * FROM vaultkeeps WHERE vaultId = @VaultId AND userId = @UserId AND keepId = @KeepId";
+      return _db.QueryFirstOrDefault<VaultKeep>(sql, vaultKeep);
+    }
+
+    public void Delete(int id)
     {
       string sql = @"DELETE FROM vaultKeeps
-      WHERE(vaultId = @vaultId AND keepId = @keepId AND userId = @userId)";
-      _db.Execute(sql, new { vaultKeep.VaultId, vaultKeep.KeepId, vaultKeep.UserId });
+      WHERE id = @id";
+      _db.Execute(sql, new { id });
     }
   }
 }

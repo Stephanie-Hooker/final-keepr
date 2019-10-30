@@ -3,11 +3,21 @@
     <div class="col-12">
       <nav class="navbar">
         <form class="form-inline">
-          <button class="btn-outline" type="button" @click="logoutNav" v-if="user.email">Logout</button>
-          <button class="btn-outline" type="button" @click="loginNav" v-else>Login</button>
+          <button
+            class="btn btn-secondary btn-lg raised active"
+            type="button"
+            @click="logoutNav"
+            v-if="user.email"
+          >Logout</button>
+          <button
+            class="btn btn-secondary btn-lg raised active"
+            type="button"
+            @click="loginNav"
+            v-else
+          >Login</button>
           <div>
             <button
-              class="btn-outline mr-1"
+              class="btn btn-secondary btn-lg raised active mr-1"
               type="button"
               @click="vaultsButton"
               v-if="user.email"
@@ -56,9 +66,17 @@ export default {
   position: sticky;
   background-color: #dad6d2;
 } */
-.btn {
-  background-color: #4bbcbc;
-  color: black;
+
+.btn-secondary.raised {
+  box-shadow: 0 3px 0 0 #626566;
+}
+
+.btn-secondary.raised:active,
+.btn-secondary.raised.active {
+  background: #ec9b9b;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
 }
 .form-inline {
   display: flex;
@@ -70,7 +88,7 @@ export default {
 
 .sticky-top {
   position: sticky;
-  background-color: rgb(197, 248, 248);
+  background-color: #f8f8f8;
 }
 /* .welcome {
   display: inline-block;

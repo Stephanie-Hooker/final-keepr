@@ -26,8 +26,9 @@ namespace final_keepr.Services
 
     public string Delete(VaultKeep vaultKeep)
     {
-      if (vaultKeep == null) { throw new Exception("invalid"); }
-      _repo.Delete(vaultKeep);
+      var vk = _repo.Get(vaultKeep);
+      if (vk == null) { throw new Exception("invalid"); }
+      _repo.Delete(vk.Id);
       return "successfully deleted";
     }
   }

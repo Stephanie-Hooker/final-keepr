@@ -43,7 +43,10 @@ export default {
   },
   methods: {
     removeVaultKeep(keepId) {
-      this.$store.dispatch("removeVaultKeep", this.vaultKeep);
+      this.$store.dispatch("removeVaultKeep", {
+        keepId,
+        vaultId: this.vault.id
+      });
     },
     backToVault() {
       this.$store.dispatch("backToVault");
